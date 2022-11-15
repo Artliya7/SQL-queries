@@ -1,0 +1,28 @@
+use hogwarts;
+select fname, lname, patronus from characters where patronus is not null and patronus <> "Unknown";
+select lname from characters where lname like "%e";
+select sum(age) from characters;
+select fname, lname, age from characters order by age desc;
+select fname, age from characters where age between 50 and 100;
+select distinct age from characters;
+select * from characters where faculty = "Gryffindor" and age > 30;
+select distinct faculty from characters limit 3;
+select fname from characters where fname like "H____" or fname like "L%";
+select avg(age) from characters;
+delete from characters where char_id = 11;
+select lname from characters where lname like "%a%";
+select fname as "Half-Blood Prince" from characters where fname = "Severus";
+select char_id, patronus from characters where patronus is not null and patronus <> "Unknown" order by patronus;
+select fname, lname from characters where lname in ("Crabbe", "Granger", "Diggory");
+select min(age) from characters;
+select fname from characters union select book_name from library;
+select count(fname), faculty from characters group by faculty having count(fname) > 1;
+select fname, lname, CASE
+    WHEN faculty = "Gryffindor" THEN "Godric"
+    WHEN faculty = "Slytherin" THEN "Salaza"
+    WHEN faculty = "Ravenclaw" THEN "Rowena"
+    WHEN faculty = "Hufflepuff" THEN "Helga"
+    ELSE "Muggle"
+END AS "Founders"
+FROM characters;
+select lname from characters where lname not regexp "^[hls]";
